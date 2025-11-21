@@ -1,8 +1,8 @@
 #include "HashTable.h"
 
 HashTable::HashTable(){
-    this->size=0;
-    this->sizeA=11;
+    this->size = 0;
+    this->sizeA = 601;
     this->tabla = new LinkedList[this->sizeA];
 }
 
@@ -18,10 +18,10 @@ void HashTable::rehashing(){
     this -> size = 0;
 
     for(int i = 0; i < oldSizeA; i++){
-        MyNodoLL* current = oldTabla[i].head;
+        NodoLL* current = oldTabla[i].head;
         while(current != nullptr){
-            int newPos = getPos(current -> key);
-            this -> tabla[newPos].insertLast(current -> key, current -> value);
+            int newPos = getPos(current -> ip);
+            this -> tabla[newPos].insertLast(current -> ip, current -> visitas);
             this -> size++;
             current = current -> next;
         }
@@ -40,12 +40,12 @@ bool HashTable::isEmpty(){
     return this -> size == 0;
 }
 
-void HashTable::put(string key, int value){
+void HashTable::put(string key, string value){
     int position = getPos(key);
-    MyNodoLL* current = this -> tabla[position].head;
+    NodoLL* current = this -> tabla[position].head;
     while (current != nullptr) {
-        if (current->key == key) {
-            current->value = value;
+        if (current->ip == key) {
+            current->visitas.push_back(value);
             return;
         }
         current = current->next;
@@ -58,7 +58,7 @@ void HashTable::put(string key, int value){
     }
 }
 
-int HashTable::get(string key){
+vector<string> HashTable::get(string key){
     int position = getPos(key);
     return this -> tabla[position].getAt(key);
 }

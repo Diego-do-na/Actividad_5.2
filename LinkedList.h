@@ -23,16 +23,17 @@ struct NodoLL {
 };;
 
 class LinkedList {
-    private:
+    public:
         int size;
         NodoLL* head;
         NodoLL* tail;
-    public:
+        
         LinkedList();
         ~LinkedList();
         bool isEmpty();
-        int getAt(string key);
-        void insertLast(string key, string);
+        vector<string> getAt(string key);
+        void insertLast(string key, string value);
+        void insertLast(string key, vector<string> visitas);
         void removeAt(string key);
         void flush();
 };

@@ -19,11 +19,11 @@ bool LinkedList::isEmpty(){
     return this -> size == 0;
 }
 
-int LinkedList::getAt(string ip){
+vector<string> LinkedList::getAt(string ip){
     NodoLL* current = this -> head;
     while(current != nullptr){
         if (current -> ip == ip){
-            return current -> visitas.size();
+            return current -> visitas;
         }
         current = current -> next;
     }
@@ -33,6 +33,19 @@ int LinkedList::getAt(string ip){
 void LinkedList::insertLast(string ip, string value){
     vector<string> visitas;
     visitas.push_back(value);
+    NodoLL* nvo = new NodoLL(ip, visitas);
+    if (this -> size == 0){
+        this -> head = nvo;
+        this -> tail = nvo;
+    }
+    else {
+        this -> tail -> next = nvo;
+        this -> tail = nvo;
+    }
+    this -> size++;
+}
+
+void LinkedList::insertLast(string ip, vector<string> visitas){
     NodoLL* nvo = new NodoLL(ip, visitas);
     if (this -> size == 0){
         this -> head = nvo;

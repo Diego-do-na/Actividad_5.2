@@ -14,7 +14,7 @@ class HashTable {
         HashTable(); 
         ~HashTable();
         bool isEmpty();
-        void put(string key,int value);
-        int get(string key);
+        void put(string key, string value);
+        vector<string> get(string key);
         void remove(string key);
 };
