@@ -22,9 +22,20 @@ int main(){
     Bitacora prueba(lineas);
     prueba.crear_hashtable();
 
+    cout << "------------------------------------------------" << endl;
     cout << "PROGRAMA DE CONSULTA DE FRECUENCIAS DE IPs" << endl;
-    string ip_solicitada;
-    cout << "Ingrese la IP que desea consultar: " << endl;
-    cin >> ip_solicitada;
-    prueba.imprimir_frecuencias(ip_solicitada);
+    cout << "------------------------------------------------" << endl;
+    bool continuar = true;
+    while (continuar){
+        string ip_solicitada;
+        cout << "\nIngrese la IP que desea consultar: " << endl;
+        cin >> ip_solicitada;
+        prueba.imprimir_frecuencias(ip_solicitada);
+        cout << "\n¿Desea consultar otra IP? (s/n): ";
+        char respuesta;
+        cin >> respuesta;
+        if (respuesta != 's' && respuesta != 'S') {
+            continuar = false;
+        }
+    }
 }
