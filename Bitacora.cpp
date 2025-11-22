@@ -1,10 +1,18 @@
+//Actividad Integradora 5.2
+//Diego Israel Dominguez Najera A01782831
+//Andrea Marlene Ramos Tiscareño A01646342
+//Samuel Rodriguez Torres A01637408
+//21 de Noviembre del 2025
+
 #include "Bitacora.h"
 #include <vector>
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <ctype.h>
 using namespace std;
 
+//Complejidad: O(n log n)
 Bitacora::Bitacora(vector<string> l){
     const string meses[] = {"jan","feb","mar","apr","may","jun", "jul","aug","sep","oct","nov","dec"};
 
@@ -45,6 +53,7 @@ Bitacora::Bitacora(vector<string> l){
     }
 }
 
+//Complejidad: O(1)
 bool Bitacora::comparar(int valor_1 , int valor_2 ){
     for (int i = 0; i < 5; i++) {
         if (fechas[valor_1][i] != fechas[valor_2][i]) {
@@ -54,6 +63,7 @@ bool Bitacora::comparar(int valor_1 , int valor_2 ){
     return false;
 }
 
+//Complejidad: O(n)
 vector<int> Bitacora::merge(const vector<int>& izq,const vector<int>& der) {
     vector<int> resultado;
     int i = 0;
@@ -82,6 +92,7 @@ vector<int> Bitacora::merge(const vector<int>& izq,const vector<int>& der) {
     return resultado;
 }
 
+//Complejidad: O(n log n)
 vector<int> Bitacora::mergeSort(const vector<int>& indices) {
     if (indices.size() <= 1) {
         return indices;
@@ -107,6 +118,7 @@ void Bitacora::mergeSort() {
     indices_ordenados = mergeSort(indices);
 }
 
+//Complejidad: O(1)
 void Bitacora::insertar_frecuencia(int indice) {
     string ip = ips[indice];
 
@@ -131,6 +143,7 @@ void Bitacora::insertar_frecuencia(int indice) {
     tabla_frecuencias.put(ip, fecha);
 }
 
+//Complejidad: O(n log n)
 void Bitacora::crear_hashtable() {
     if (indices_ordenados.empty()) {
         mergeSort();
@@ -142,6 +155,7 @@ void Bitacora::crear_hashtable() {
     }
 }
 
+//Complejidad: O(k), donde k es el número de visitas para la IP solicitada
 void Bitacora::imprimir_frecuencias(string ip_solicitada) {
     vector <string> fechas_solicitadas = tabla_frecuencias.get(ip_solicitada);
     if (fechas_solicitadas.size() == 0) {

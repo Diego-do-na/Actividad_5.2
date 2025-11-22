@@ -1,11 +1,19 @@
+//Actividad Integradora 5.2
+//Diego Israel Dominguez Najera A01782831
+//Andrea Marlene Ramos Tiscareño A01646342
+//Samuel Rodriguez Torres A01637408
+//21 de Noviembre del 2025
+
 #include "LinkedList.h"
 
+//Complejidad: O(1)
 LinkedList::LinkedList(){
     this -> size = 0;
     this -> head = nullptr;
     this -> tail = nullptr;
 }
 
+//Complejidad: O(n)
 LinkedList::~LinkedList(){
     NodoLL* current = this -> head;
     while(current != nullptr){
@@ -15,10 +23,12 @@ LinkedList::~LinkedList(){
     }
 }
 
+//Complejidad: O(1)
 bool LinkedList::isEmpty(){
     return this -> size == 0;
 }
 
+//Complejidad: O(n)
 vector<string> LinkedList::getAt(string ip){
     NodoLL* current = this -> head;
     while(current != nullptr){
@@ -30,6 +40,7 @@ vector<string> LinkedList::getAt(string ip){
     throw invalid_argument("No se encontro la clave");
 }
 
+//Complejidad: O(1)
 void LinkedList::insertLast(string ip, string value){
     vector<string> visitas;
     visitas.push_back(value);
@@ -45,6 +56,7 @@ void LinkedList::insertLast(string ip, string value){
     this -> size++;
 }
 
+//Complejidad: O(1)
 void LinkedList::insertLast(string ip, vector<string> visitas){
     NodoLL* nvo = new NodoLL(ip, visitas);
     if (this -> size == 0){
@@ -58,6 +70,7 @@ void LinkedList::insertLast(string ip, vector<string> visitas){
     this -> size++;
 }
 
+//Complejidad: O(n)
 void LinkedList::removeAt(string ip){
     if(this -> size == 0){
         throw invalid_argument("No se ha podido eliminar la clave porque la lista está vacía");
@@ -94,6 +107,7 @@ void LinkedList::removeAt(string ip){
     this -> size--;
 }
 
+//Complejidad: O(n)
 void LinkedList::flush(){
     NodoLL* current = this -> head;
     while(current != nullptr){

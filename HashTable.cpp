@@ -1,5 +1,12 @@
+//Actividad Integradora 5.2
+//Diego Israel Dominguez Najera A01782831
+//Andrea Marlene Ramos Tiscareño A01646342
+//Samuel Rodriguez Torres A01637408
+//21 de Noviembre del 2025
+
 #include "HashTable.h"
 
+//Complejidad: O(1)
 HashTable::HashTable(){
     this->size = 0;
     this->sizeA = 601;
@@ -10,6 +17,7 @@ HashTable::~HashTable(){
     delete[] this->tabla;
 }
 
+//Complejidad: O(n)
 void HashTable::rehashing(){
     int oldSizeA = this -> sizeA;
     this -> sizeA = this -> sizeA * 2 + 1;
@@ -30,6 +38,7 @@ void HashTable::rehashing(){
     delete[] oldTabla;
 }
 
+//Complejidad: O(1)
 int HashTable::getPos(string key){
     size_t hashC=hash<string>{}(key);
     int hashCode=static_cast<int>(hashC);
@@ -40,6 +49,7 @@ bool HashTable::isEmpty(){
     return this -> size == 0;
 }
 
+//Complejidad: O(1)
 void HashTable::put(string key, string value){
     int position = getPos(key);
     NodoLL* current = this -> tabla[position].head;
@@ -58,6 +68,7 @@ void HashTable::put(string key, string value){
     }
 }
 
+//Complejidad: O(1)
 vector<string> HashTable::get(string key){
     int position = getPos(key);
     return this -> tabla[position].getAt(key);

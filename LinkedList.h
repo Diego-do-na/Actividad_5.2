@@ -7,6 +7,7 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <stdexcept>
 using namespace std;
 
 struct NodoLL {
