@@ -5,6 +5,11 @@
 //21 de Noviembre del 2025
 
 #include "HashTable.h"
+#include <stdexcept>
+#include <vector>
+#include <string>
+#include <cstdlib>
+using namespace std;
 
 //Complejidad: O(1)
 HashTable::HashTable(){
@@ -13,6 +18,7 @@ HashTable::HashTable(){
     this->tabla = new LinkedList[this->sizeA];
 }
 
+//Complejidad: O(1)
 HashTable::~HashTable(){
     delete[] this->tabla;
 }
@@ -45,6 +51,10 @@ int HashTable::getPos(string key){
     return abs(hashCode)%this->sizeA;
 }
 
+// Para el mejor entendimiento de las hash tables, recurri a los siguientes videos:
+// Chio Code. (2025, February 10). Entiende por fin el Hashing y las Tablas Hash | Estructuras de Datos [Video]. YouTube. https://www.youtube.com/watch?v=CrXDTPE4DQI
+// Coding Jesus (getcracked.io). (2019, October 14). C++ Hash Table Implementation [Video]. YouTube. https://www.youtube.com/watch?v=2_3fR-k-LzI
+
 bool HashTable::isEmpty(){
     return this -> size == 0;
 }
@@ -74,6 +84,7 @@ vector<string> HashTable::get(string key){
     return this -> tabla[position].getAt(key);
 }
 
+// Complejidad: O(1)
 void HashTable::remove(string key){
     int pos = getPos(key);
     try {
@@ -81,6 +92,6 @@ void HashTable::remove(string key){
         this->size--;
     } 
     catch (invalid_argument&) {
-        throw; 
+        throw invalid_argument("La clave no existe en la tabla."); 
     }
 }

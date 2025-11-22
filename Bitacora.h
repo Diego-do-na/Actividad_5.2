@@ -10,8 +10,6 @@
 #include "HashTable.h"
 using namespace std;
 
-
-
 class Bitacora {
     private:
         vector<string> ips;

@@ -5,6 +5,10 @@
 //21 de Noviembre del 2025
 
 #include "LinkedList.h"
+#include <stdexcept>
+#include <vector>
+#include <string>
+using namespace std;
 
 //Complejidad: O(1)
 LinkedList::LinkedList(){
